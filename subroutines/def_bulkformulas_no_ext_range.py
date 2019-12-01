@@ -22,11 +22,9 @@
 import numpy as np
 
 # ncep_ncar_2007
-def ncep_ncar_2007(U, LAT) -> np.ndarray:
+def ncep_ncar_2007(U) -> np.ndarray:
 
-Cd = np.empty_like(U)
-Cd.fill(1.3e-3)
-
+    Cd = np.ones_like(U) * 1.3e-3
     return Cd
 
 
@@ -40,8 +38,11 @@ def large_and_pond_1981(U: np.ndarray = np.ndarray, extend_ranges=False
 
     if not extend_ranges:
         Cd = np.where(np.logical_and(4 <= U, U <= 25), Cd, np.nan)
-
         return Cd
+    elif extend_ranges:
+        return Cd
+
+
 
 
 # yelland_and_taylor_1996
@@ -57,7 +58,8 @@ def yelland_and_taylor_1996(U: np.ndarray = np.ndarray, extend_ranges=False) -> 
 
     if not extend_ranges:
         Cd = np.where(np.logical_and(3 <= U, U <= 26), Cd, np.nan)
-
+        return Cd
+    elif extend_ranges:
         return Cd
 
 # trenberth_etal_1990
@@ -89,5 +91,6 @@ def large_and_yeager_2004(
 
     if not extend_ranges:
         Cd = np.where((U != 0), Cd, np.nan)
-
+        return Cd
+    elif extend_ranges:
         return Cd
