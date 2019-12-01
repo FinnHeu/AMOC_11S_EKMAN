@@ -1,6 +1,8 @@
 import numpy as np
 
-def windstress(U,V,Cd_U,Cd_V):
+def windstress(U: np.ndarray=np.ndarray,V: np.ndarray=np.ndarray,
+               Cd_U: np.ndarray=np.ndarray,Cd_V: np.ndarray=np.ndarray) -> np.ndarray:
+               
 # Set parameters
 rho_air = np.ones_like(U) * 1.2041 #kg/m³
 

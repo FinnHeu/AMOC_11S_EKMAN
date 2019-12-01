@@ -11,7 +11,7 @@ def Ekman_Transport(U: np.ndarray = np.ndarray,
 # U:                        [n x m] zonal wind speed
 # V:                        [n x m] merdidional wind speed
 # LAT:                      [n x m] latitude
-# drag_coeff:               0|1|2|3|4|5|6|7
+# drag_coeff:               0|1|2|3|4|
 # extend_ranges:            True | False
 # ekman_layer_constant:     True | False
 #
@@ -24,12 +24,12 @@ def Ekman_Transport(U: np.ndarray = np.ndarray,
     if not extend_ranges:
         %run def_bulkformulas_no_ext_range.py
     else:
-        %run def_bulkformulas_ext_range.p
+        %run def_bulkformulas_ext_range.py
 
     %run def_drag_coefficients.py
     %run def_windstress.py
-    %run def_ekman_layer_depth.py # <--- not existing yet
-    %run def_ekman_transp.py ??? # <--- not existing yet
+    %run def_ekman_depth_const.py
+    %run def_ekman_depth_vary.py 
 
     # 1. Check and reshape Data
     U_vec, V_vec, LAT_vec = check_and_reshape(U,V,LAT) # Reshapes all input data into vectors
