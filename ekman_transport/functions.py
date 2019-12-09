@@ -525,15 +525,15 @@ def Ekman_Transport(U: np.ndarray = np.ndarray,
     
     # 11. Give Output
 
-    if drag_coeff == 1:
+    if drag_coeff == 0:
         print('Drag Coefficient: ncep_ncar_2007')
         return(U_ekman[:,:,0], V_ekman[:,:,0])
         
-    elif drag_coeff == 2:
+    elif drag_coeff == 1:
         print('Drag Coefficient: large_and_pond_1981')
         return(U_ekman[:,:,1], V_ekman[:,:,1])
         
-    elif drag_coeff == 3:
+    elif drag_coeff == 2:
         print('Drag Coefficient: trenberth_etal_1990')
         return(U_ekman[:,:,0], V_ekman[:,:,0])
         
